@@ -57,12 +57,62 @@ Step3:如何配置Hadoop
             <value>/hadoop</value>
             </property>
 
-            
+            <property>
+            <name>dfs.name.dir</name>
+            <value>/hadoop/name</value>
+            </property>
+
+            <property>
+            <name>fs.default.name</name>
+            <value>hdfs://imooc:9000</value>
+            </property>
+
         </configuration>
         ______________________________________________________________________________
 
+        vim hdfs-site.xml
 
+        ——————————————————————————————————————————————————————————————————————————————
+        <?xml version="1.0"?>
+        <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
+        <!-- Put site-specific property overrides in this file. -->
+
+        <configuration>
+            <property>
+            <name>dfs.data.dir</name>
+            <value>/hadoop/data</value>
+            </property>
+        </configuration>
+        ——————————————————————————————————————————————————————————————————————————————
+
+         vim mapred-site.xml
+
+        ——————————————————————————————————————————————————————————————————————————————
+        
+        <?xml version="1.0"?>
+        localhost.localdomain
+        <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+        <!-- Put site-specific property overrides in this file. -->
+
+        <configuration>
+            <property>
+                <name>mapred.job.tracker</name>
+                <value>imooc:9001</value>
+            </property>
+        </configuration>
+        ——————————————————————————————————————————————————————————————————
+
+        设置hadoop环境变量
+        vim /etc/profile
+
+        export HADOOP_HOME=/opt/hadoop-1.2.1
+        export PATH=$PATH:$JAVA_HOME/bin:/usr/sbin:$HADOOP_HOME/bin
+
+        source /etc/profile
+
+        执行hadoop命令
 
 
 
